@@ -1,6 +1,6 @@
 export default function Search({search, setSearch, handleSearch}) {
   return (
-    <div className="search-engine">
+    <div className="search-engine w-full flex justify-around items-center mb-8 mt-2.5">
       <input
         type="text"
         placeholder="Enter City Name"
@@ -8,7 +8,7 @@ export default function Search({search, setSearch, handleSearch}) {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <button className="search-btn" onClick={handleSearch}>Search Weather</button>
+      <button className="border-none rounded-md bg-black text-white text-lg outline-none cursor-pointer p-3.5" onClick={handleSearch}>Search Weather</button>
     </div>
   );
 }

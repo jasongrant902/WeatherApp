@@ -10,7 +10,7 @@ export default function Weather() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=fff8651af82519a977ccff422a8fa4e9
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=fff8651af82519a977ccff422a8fa4e9&units=metric
         `
       );
 
@@ -52,25 +52,25 @@ export default function Weather() {
         handleSearch={handleSearch}
       />
       {loading ? (
-        <div className="loading">Loading...</div>
+        <div className="loading text-6xl font-bold text-black">Loading...</div>
       ) : (
         <div>
-          <div className="city-name">
+          <div className="city-name mb-2.5">
             <h2>
               {weatherData?.name}, <span>{weatherData?.sys?.country}</span>
             </h2>
           </div>
-          <div className="date">
+          <div className="date text-lg font-medium italic">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp">{weatherData?.main?.temp}</div>
-          <p className="description">
+          <div className="temp text-8xl text-black font-bold text-center">{Math.floor(weatherData?.main?.temp)} °C</div>
+          <p className="description text-xl mt-0 mb-5 font-medium text-black">
             {weatherData && weatherData.weather && weatherData.weather[0]
-              ? weatherData[0].description
+              ? weatherData.weather[0].description
               : ""}
           </p>
-          <div className="weather-info">
-            <div className="subsection">
+          <div className="weather-info flex justify-evenly mt-5 p-0 px-5 items-center text-lg font-bold text-center">
+            <div className="subsection flex items-center">
               <div>
                 <p className="wind">{weatherData?.wind?.speed}</p>
                 <p>Wind Speed</p>
